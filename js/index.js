@@ -15,7 +15,7 @@ if("serviceWorker" in navigator) {
 // Code to handle install prompt on desktop
 
 let deferredPrompt;
-const addBtn = document.getElementsByClassName("add-button")[0];
+const addBtn = document.querySelector('.add-button');
 addBtn.style.display = "none";
 
 window.addEventListener("beforeinstallprompt", (e) => {
