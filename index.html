@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PWA ATAFS START-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- PWA ATAFS END -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="css/styles.css" rel="stylesheet" id="styles-css">
+  
+  <title>Jef Web Wallet</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          Jefinho - Web Wallet
+        </a>
+      </div>
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">			
+        <ul class="nav navbar-nav navbar-right">
+          <li id="walletBtn"><a href="#"><i class="fa fa-wallet"></i> Carteira</a></li>
+          <li id="aboutBtn"><a href="#"><i class="fa fa-info"></i> Sobre</a></li>
+          <li id="dropdown" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <i class="fa fa-settings"></i> Avançado
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li id="addr-id-clipboard" data-clipboard-text="ADDRESS"><a href="#"><i class="fa fa-copy"></i> Copiar endereço</a></a></li>
+                <li id="addr-balance-refresh"><a href="#"><i class="fa fa-bolt" style="width: 14px;"></i>&ThickSpace;Atualizar o saldo</a></li>
+                <li id="privatekey-copy"><a href="#"><i class="fa fa-key" style="width: 14px;"></i>&ThickSpace;Copiar a chave privada</a></li>
+                <li id="changeaddress-modify"><a href="#"><i class="fa fa-vial" style="width: 14px;"></i>&ThickSpace;Inserir endereço de alteração</a></li>
+                <li id="trx-fee"><a href="#"><i class="fa fa-wrench" style="width: 14px;"></i>&ThickSpace;Alterar o valor da taxa</a></li>
+                <li id=""><a href="https://jeferson0993.github.io/coinbin/#fees" target="_blank"><i class="fa fa-donate" style="width: 14px;"></i>&ThickSpace;Menor valor de taxa</a></li>
+                <li id="trx-donation" class=""><a href="#"><i class="fa fa-donate" style="width: 14px;"></i>&ThickSpace;Doação</a></li>
+                <li class="divider"></li>
+                <li id="logoutBtn" ><a href="#"><i class="fas fa-sign-out-alt"></i>&ThickSpace;Sair</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <section class="form">
+          <div id="about-container">
+            <p align="center">
+              <a href="https://github.com/jeferson0993/wallet">
+                <img src="https://user-images.githubusercontent.com/29678099/102724065-83263880-42eb-11eb-8625-37935126a86e.png" alt="Logo" width="80" height="80">
+              </a>
+              <h3 align="center">Jefinho - Bitcoin Web Wallet</h3>
+            
+              <p align="center">
+                carteira bitcoin de código aberto
+                <br />
+                <br />
+                <strong>Me pague um cafézinho</strong><br />
+                <i>bc1qk2up2058008rwnh3jkyhhwfg7450nzmrk0ms4j</i>
+                <br />
+                <i>1PKTbhTEYe78EJUs4i3rkmNCtatNRMmUFb</i>
+                <br />
+                <a href="https://github.com/jeferson0993/wallet/issues">Reportar erro</a>
+                ·
+                <a href="https://github.com/jeferson0993/wallet/issues">Solicitar recurso</a>
+              </p>
+            </p>
+            <h3>Esta página usa javascript para gerar seus endereços e assinar suas transações em seu navegador, isso significa que nunca recebemos suas chaves privadas. Isso pode ser verificado de forma independente, revisando o código-fonte no github. Você pode até baixar esta página e hospedá-la você mesmo ou executá-la offline!</h3s>
+          </div>
+
+          <div id="pwd-container">
+            <form id="form" method="post" action="javascript:login();" role="login">              
+              <div>
+                <input id="email" type="email" name="email" placeholder="Email" required class="form-control input-lg"
+                  value="" />
+                <div class="input-group">
+                  <input style="margin: 0px;" type="password" class="form-control input-lg" id="password"
+                    placeholder="Senha" required value="" />
+                  <span class="input-group-btn">
+                    <button id="btnPasswordQR" class="btn" style="margin: 0px; display: none;" type="button"><i
+                        class="fa fa-qrcode" style="height: 29; width: 29; font-size: 30px;"></i></button>
+                    <button id="btnPasswordEye" class="btn" style="margin: 0px;" type="button"><i class="fa fa-eye"
+                        style="height: 29; width: 29; font-size: 30px;"></i></button>
+                  </span>
+                </div>
+                <div class="pwstrength_viewport_errors"></div>
+                <div class="pwstrength_viewport_progress"></div>
+                <button id="signin" type="submit" name="go"
+                  class="btnMain btn btn-lg btn-primary btn-block">ENTRAR</button>
+                <button id="privlogintoggle" type="button" style="font-weight: bold;" class="btn btn-primary"
+                  data-toggle="button" aria-pressed="false" autocomplete="off">Entre com sua chave privada</button>
+              </div>
+              <div id="loginprogress" style="display: none;">
+              </div>
+            </form>
+            <div class="c-loader">
+              <img src="images/bitcoin.png" alt="">
+            </div>
+          </div>
+
+          <div id="addr-container">
+            <form method="post" action="javascript:spendf();" role="spend" style="padding-bottom: 2px;">
+              <div class="" style="display: flex; justify-content: center; align-items: center;">
+                <div title="BTC" class="col-md-3 currency-logo" style="padding: 2px; width: 53px;">
+                  <img src="images/bitcoin.png" class="img-responsive" alt="" />
+                </div>
+              </div>
+
+              <div class="">
+                <div class="alert alert-info fade in"
+                  style="margin-bottom: 0px; padding-left: 5px; padding-right: 5px; font-weight: bold; font-size: 12px;">
+                  <a href="" target="_blank" style="font-size: 1.05em;" id="addr-id"></a>
+                  <hr />
+                  <div style="margin-top: 2px;">
+                    <a href="javascript:togglePrice();" class="label hvr-buzz-out label-primary" id="addr-balance"
+                      style="vertical-align: middle; font-size: 16.8px; padding: 4.3px;"></a>
+                  </div>
+                </div>
+
+                <div id="addr-receive" style="padding-top: 10px;">
+                  <img id="addr-qr" width="156" class="img-responsive" style="border: 1px solid black;" src="" alt="" />
+                </div>
+
+                <div id="addr-spend" style="display: none; margin-bottom: 2px;">
+                  <div class="input-group">
+                    <input id="address" autocomplete="off" type="text" required name="address"
+                      placeholder="Endereço para onde enviar" class="form-control input-lg input-spend" value="" />
+                    <span class="input-group-btn">
+                      <button id="openQrModalBtn" class="btn" type="button"><i
+                          class="fa fa-qrcode" style="height: 29; width: 29; font-size: 30px;"></i></button>
+                    </span>
+                  </div>
+                  <div class="input-group">
+                    <input type="number" required autocomplete="off" class="form-control input-lg input-spend"
+                      min="0.001" step="0.00000001" name="amount" id="amount" placeholder="Valor para enviar"
+                      oninput="javascript:amountChanged(this.value);" />
+                    <span class="input-group-btn">
+                      <button id="copyWholeBalanceBtn" class="btn" type="button"><i class="fa fa-bars"
+                          style="height: 29; width: 29; font-size: 30px;"></i></button>
+                    </span>
+                  </div>
+                  <button id="submit" type="submit" name="submit"
+                    class="btnMain btn btn-lg btn-primary btn-block">Enviar</button>
+                </div>
+
+                <div class="" id="spend-receive" style="margin-bottom: 13px">
+                  <div class="btn-group text-center" data-toggle="buttons" style="padding-top: 10px">
+                    <label id="mainR" title="Receber" style="font-weight: bold;"
+                      class="btn btn-primary active center-block"><input value="R" onchange="rsvs(this);" type="radio">
+                      <h4>Receber</h4>
+                    </label>
+                    <label id="mainS" title="Enviar" style="font-weight: bold;"
+                      class="btn btn-primary center-block"><input value="S" onchange="rsvs(this);" type="radio">
+                      <h4>Enviar</h4>
+                    </label>
+                  </div>
+                </div>
+
+                <div id="sendprogress" style="display: none;">
+                  <img src="images/loading.gif" style="width: 100%; height: 25px; margin-bottom: 0px;" />
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+          <div class="">
+            <button class="add-button btn btn-lg btn-block btn-success">
+              Instalar aplicativo
+            </button>
+          </div>
+          
+          <div class="footer">
+            <a target="_blank" href="https://www.bitaddress.org/">Gerar Endereço</a> |
+            <a target="_blank" href="https://www.blockchain.com/pt/explorer">Explorer</a> |
+            <a target="_blank" href="https://jeferson0993.github.io/coinbin/">Coinbin</a> |
+            <a target="_blank" href="https://github.com/jeferson0993/wallet/">Github</a>
+          </div>
+
+        </section>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- Warning Modal -->
+  <div class="modal fade" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="modalWarningLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalWarningLabel" style="font-weight: bold;">TERMOS DE USO:</h5>
+        </div>
+        <div class="modal-body">
+          <p style="text-align: justify;">Certifique-se de salvar ou lembrar o e-mail e a senha que escolheu para fazer
+            login
+            pela primeira vez. Inserir o e-mail e a senha errados NÃO resultará em erro, mas abrirá
+            o endereço errado, que provavelmente estará vazio! Se você esquecer ou perder o e-mail e / ou senha que você
+            escolher fazer o login pela primeira vez, ninguém poderá ajudá-lo a recuperar sua conta e seus fundos
+            estará perdido para sempre!<br /><br /><strong>SEJA O SEU PRÓPRIO BANCO!</strong></p>
+        </div>
+        <div class="modal-footer">
+          <button id="acceptTermsBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Aceitar</button>
+          <button id="rejectTermsBtn" type="button" class="btn btn-secondary">Recusar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Qr Scanner Modal -->
+  <div class="modal fade" id="modalQrCode" tabindex="-1" role="dialog" aria-labelledby="modalQrCodeLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalQrCodeLabel" style="font-weight: bold;">Digitalize o seu código QR</h5>
+        </div>
+        <div class="modal-body">
+          <video id="qrScannerPreview" style="width: 100%;"></video>
+        </div>
+        <div class="modal-footer">
+          <button id="closeModalBtn" type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/jquery-3.5.0.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/instascan.min.js"></script>
+  <script type="text/javascript" src="js/cc.js"></script>
+  <script type="text/javascript" src="js/clipboard.min.js"></script>
+  <script type="text/javascript" src="js/cookie.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
